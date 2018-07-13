@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50722
 File Encoding         : 65001
 
-Date: 2018-07-13 15:04:16
+Date: 2018-07-13 18:21:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -173,6 +173,24 @@ CREATE TABLE `images` (
 -- ----------------------------
 -- Records of images
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for manager
+-- ----------------------------
+DROP TABLE IF EXISTS `manager`;
+CREATE TABLE `manager` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `account` varchar(255) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `createTime` datetime DEFAULT NULL,
+  `dataFlag` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of manager
+-- ----------------------------
+INSERT INTO `manager` VALUES ('1', 'admin', '12152205', '2018-07-13 16:56:27', '1');
 
 -- ----------------------------
 -- Table structure for orders

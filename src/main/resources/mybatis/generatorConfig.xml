@@ -8,15 +8,17 @@
         </commentGenerator>
 		<jdbcConnection connectionURL="jdbc:mysql://100.100.100.75:3306/store"
 			driverClass="com.mysql.jdbc.Driver" password="123456" userId="zhaohao" />
-		<javaModelGenerator targetPackage="com.zwh.pet.store.entity"
+		<javaModelGenerator targetPackage="com.zwh.store.entity"
 			targetProject="ZWH_Store/src/main/java" />
 		<!-- 生成映射文件的包名和位置 -->
-		<sqlMapGenerator targetPackage="mybatis.mapper.weapp"
+		<sqlMapGenerator targetPackage="mybatis.mapper.manager"
 			targetProject="ZWH_Store/src/main/resources" />
 		<!-- 生成DAO的包名和位置 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.zwh.pet.store.mapper" targetProject="ZWH_Store/src/main/java" />
-		<table tableName="images" enableCountByExample="false"
+		
+		
+			targetPackage="com.zwh.store.mapper" targetProject="ZWH_Store/src/main/java" />
+		<table tableName="manager" enableCountByExample="false"
 			enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" selectByExampleQueryId="false">
 		</table>

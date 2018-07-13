@@ -10,6 +10,6 @@
 		<package name="com.**.entity"/>
     </typeAliases>
 	<plugins>
-		<plugin interceptor="com.zwh.pet.system.plugins.PageInterceptor"></plugin>
+		<plugin interceptor="com.zwh.system.plugins.PageInterceptor"></plugin>
 	</plugins>
 </configuration>

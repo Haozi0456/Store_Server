@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zwh.pet.store.mapper.GoodsMapper">
-  <resultMap id="BaseResultMap" type="com.zwh.pet.store.entity.Goods">
+<mapper namespace="com.zwh.store.mapper.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.zwh.store.entity.Goods">
     <id column="goodsId" jdbcType="INTEGER" property="goodsid" />
     <result column="goodsSn" jdbcType="VARCHAR" property="goodssn" />
     <result column="productNo" jdbcType="VARCHAR" property="productno" />
@@ -28,7 +28,7 @@
     <result column="dataFlag" jdbcType="INTEGER" property="dataflag" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.zwh.pet.store.entity.Goods">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.zwh.store.entity.Goods">
     <result column="gallery" jdbcType="LONGVARCHAR" property="gallery" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -52,7 +52,7 @@
     delete from goods
     where goodsId = #{goodsid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.zwh.pet.store.entity.Goods">
+  <insert id="insert" parameterType="com.zwh.store.entity.Goods">
     insert into goods (goodsId, goodsSn, productNo, 
       goodsName, goodsImg, warnStock, 
       goodsStock, goodsUnit, goodsTips, 
@@ -72,7 +72,7 @@
       #{goodsseokeywords,jdbcType=VARCHAR}, #{illegalremarks,jdbcType=VARCHAR}, #{dataflag,jdbcType=INTEGER}, 
       now() #{gallery,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.zwh.pet.store.entity.Goods">
+  <insert id="insertSelective" parameterType="com.zwh.store.entity.Goods">
     insert into goods
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="goodssn != null">
@@ -230,7 +230,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zwh.pet.store.entity.Goods">
+  <update id="updateByPrimaryKeySelective" parameterType="com.zwh.store.entity.Goods">
     update goods
     <set>
       <if test="productno != null">
@@ -308,7 +308,7 @@
     </set>
     where goodsId = #{goodsid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zwh.pet.store.entity.Goods">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zwh.store.entity.Goods">
     update goods
     set goodsSn = #{goodssn,jdbcType=VARCHAR},
       productNo = #{productno,jdbcType=VARCHAR},
@@ -336,7 +336,7 @@
       gallery = #{gallery,jdbcType=LONGVARCHAR}
     where goodsId = #{goodsid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zwh.pet.store.entity.Goods">
+  <update id="updateByPrimaryKey" parameterType="com.zwh.store.entity.Goods">
     update goods
     set goodsSn = #{goodssn,jdbcType=VARCHAR},
       productNo = #{productno,jdbcType=VARCHAR},

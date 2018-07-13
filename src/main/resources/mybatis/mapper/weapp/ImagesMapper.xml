@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zwh.pet.store.mapper.ImagesMapper">
-  <resultMap id="BaseResultMap" type="com.zwh.pet.store.entity.Images">
+<mapper namespace="com.zwh.store.mapper.ImagesMapper">
+  <resultMap id="BaseResultMap" type="com.zwh.store.entity.Images">
     <id column="imgId" jdbcType="INTEGER" property="imgid" />
     <result column="fromType" jdbcType="INTEGER" property="fromtype" />
     <result column="dataId" jdbcType="INTEGER" property="dataid" />
@@ -26,7 +26,7 @@
     delete from images
     where imgId = #{imgid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.zwh.pet.store.entity.Images">
+  <insert id="insert" parameterType="com.zwh.store.entity.Images">
     insert into images (imgId, fromType, dataId, 
       imgPath, imgSize, isUse, 
       createTime, fromTable, ownId, 
@@ -36,7 +36,7 @@
       #{createtime,jdbcType=TIMESTAMP}, #{fromtable,jdbcType=VARCHAR}, #{ownid,jdbcType=INTEGER}, 
       #{dataflag,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.zwh.pet.store.entity.Images">
+  <insert id="insertSelective" parameterType="com.zwh.store.entity.Images">
     insert into images
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="imgid != null">
@@ -103,7 +103,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zwh.pet.store.entity.Images">
+  <update id="updateByPrimaryKeySelective" parameterType="com.zwh.store.entity.Images">
     update images
     <set>
       <if test="fromtype != null">
@@ -136,7 +136,7 @@
     </set>
     where imgId = #{imgid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zwh.pet.store.entity.Images">
+  <update id="updateByPrimaryKey" parameterType="com.zwh.store.entity.Images">
     update images
     set fromType = #{fromtype,jdbcType=INTEGER},
       dataId = #{dataid,jdbcType=INTEGER},

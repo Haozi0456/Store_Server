@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zwh.pet.store.mapper.UserMapper">
+<mapper namespace="com.zwh.store.mapper.UserMapper">
 	<resultMap id="BaseResultMap"
-		type="com.zwh.pet.store.entity.User">
+		type="com.zwh.store.entity.User">
 		<id column="id" jdbcType="INTEGER" property="id" />
 		<result column="openid" jdbcType="VARCHAR" property="openid" />
 		<result column="name" jdbcType="VARCHAR" property="name" />
@@ -40,7 +40,7 @@
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert"
-		parameterType="com.zwh.pet.store.entity.User" useGeneratedKeys="true"
+		parameterType="com.zwh.store.entity.User" useGeneratedKeys="true"
 		keyProperty="id">
 		insert into user (openid, name,
 		gender, phone, password,
@@ -55,7 +55,7 @@
 		#{lastvisittime,jdbcType=TIMESTAMP}, #{userstatus,jdbcType=INTEGER})
 	</insert>
 	<insert id="insertSelective"
-		parameterType="com.zwh.pet.store.entity.User">
+		parameterType="com.zwh.store.entity.User">
 		insert into user
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="openid != null">
@@ -126,7 +126,7 @@
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective"
-		parameterType="com.zwh.pet.store.entity.User">
+		parameterType="com.zwh.store.entity.User">
 		update user
 		<set>
 			<if test="openid != null">
@@ -160,7 +160,7 @@
 		where id = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey"
-		parameterType="com.zwh.pet.store.entity.User">
+		parameterType="com.zwh.store.entity.User">
 		update user
 		set openid = #{openid,jdbcType=VARCHAR},
 		name
@@ -180,7 +180,7 @@
 	</update>
 
 	<select id="getUserById"
-		resultType="com.zwh.pet.store.entity.User">
+		resultType="com.zwh.store.entity.User">
 		SELECT
 		*
 		FROM
@@ -190,7 +190,7 @@
 	</select>
 
 	<select id="getUserByAccount"
-		resultType="com.zwh.pet.store.entity.User">
+		resultType="com.zwh.store.entity.User">
 		SELECT
 		*
 		FROM
@@ -200,7 +200,7 @@
 	</select>
 
 	<select id="getUserByOpenid"
-		resultType="com.zwh.pet.store.entity.User">
+		resultType="com.zwh.store.entity.User">
 		SELECT
 		*
 		FROM
@@ -210,7 +210,7 @@
 	</select>
 
 	<select id="getUserByAccountAndPassword"
-		resultType="com.zwh.pet.store.entity.User">
+		resultType="com.zwh.store.entity.User">
 		SELECT
 		*
 		FROM
@@ -222,7 +222,7 @@
 	</select>
 
 	<update id="updateUserById"
-		parameterType="com.zwh.pet.store.entity.User">
+		parameterType="com.zwh.store.entity.User">
 		update user
 		set openid = #{openid,jdbcType=VARCHAR},
 		name
