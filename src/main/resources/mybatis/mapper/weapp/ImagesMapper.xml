@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zwh.pet.store.mapper.ImagesMapper">
+  <resultMap id="BaseResultMap" type="com.zwh.pet.store.entity.Images">
+    <id column="imgId" jdbcType="INTEGER" property="imgid" />
+    <result column="fromType" jdbcType="INTEGER" property="fromtype" />
+    <result column="dataId" jdbcType="INTEGER" property="dataid" />
+    <result column="imgPath" jdbcType="VARCHAR" property="imgpath" />
+    <result column="imgSize" jdbcType="INTEGER" property="imgsize" />
+    <result column="isUse" jdbcType="INTEGER" property="isuse" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="fromTable" jdbcType="VARCHAR" property="fromtable" />
+    <result column="ownId" jdbcType="INTEGER" property="ownid" />
+    <result column="dataFlag" jdbcType="INTEGER" property="dataflag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    imgId, fromType, dataId, imgPath, imgSize, isUse, createTime, fromTable, ownId, dataFlag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from images
+    where imgId = #{imgid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from images
+    where imgId = #{imgid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zwh.pet.store.entity.Images">
+    insert into images (imgId, fromType, dataId, 
+      imgPath, imgSize, isUse, 
+      createTime, fromTable, ownId, 
+      dataFlag)
+    values (#{imgid,jdbcType=INTEGER}, #{fromtype,jdbcType=INTEGER}, #{dataid,jdbcType=INTEGER}, 
+      #{imgpath,jdbcType=VARCHAR}, #{imgsize,jdbcType=INTEGER}, #{isuse,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{fromtable,jdbcType=VARCHAR}, #{ownid,jdbcType=INTEGER}, 
+      #{dataflag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zwh.pet.store.entity.Images">
+    insert into images
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="imgid != null">
+        imgId,
+      </if>
+      <if test="fromtype != null">
+        fromType,
+      </if>
+      <if test="dataid != null">
+        dataId,
+      </if>
+      <if test="imgpath != null">
+        imgPath,
+      </if>
+      <if test="imgsize != null">
+        imgSize,
+      </if>
+      <if test="isuse != null">
+        isUse,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="fromtable != null">
+        fromTable,
+      </if>
+      <if test="ownid != null">
+        ownId,
+      </if>
+      <if test="dataflag != null">
+        dataFlag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="imgid != null">
+        #{imgid,jdbcType=INTEGER},
+      </if>
+      <if test="fromtype != null">
+        #{fromtype,jdbcType=INTEGER},
+      </if>
+      <if test="dataid != null">
+        #{dataid,jdbcType=INTEGER},
+      </if>
+      <if test="imgpath != null">
+        #{imgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="imgsize != null">
+        #{imgsize,jdbcType=INTEGER},
+      </if>
+      <if test="isuse != null">
+        #{isuse,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fromtable != null">
+        #{fromtable,jdbcType=VARCHAR},
+      </if>
+      <if test="ownid != null">
+        #{ownid,jdbcType=INTEGER},
+      </if>
+      <if test="dataflag != null">
+        #{dataflag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zwh.pet.store.entity.Images">
+    update images
+    <set>
+      <if test="fromtype != null">
+        fromType = #{fromtype,jdbcType=INTEGER},
+      </if>
+      <if test="dataid != null">
+        dataId = #{dataid,jdbcType=INTEGER},
+      </if>
+      <if test="imgpath != null">
+        imgPath = #{imgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="imgsize != null">
+        imgSize = #{imgsize,jdbcType=INTEGER},
+      </if>
+      <if test="isuse != null">
+        isUse = #{isuse,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fromtable != null">
+        fromTable = #{fromtable,jdbcType=VARCHAR},
+      </if>
+      <if test="ownid != null">
+        ownId = #{ownid,jdbcType=INTEGER},
+      </if>
+      <if test="dataflag != null">
+        dataFlag = #{dataflag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where imgId = #{imgid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zwh.pet.store.entity.Images">
+    update images
+    set fromType = #{fromtype,jdbcType=INTEGER},
+      dataId = #{dataid,jdbcType=INTEGER},
+      imgPath = #{imgpath,jdbcType=VARCHAR},
+      imgSize = #{imgsize,jdbcType=INTEGER},
+      isUse = #{isuse,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      fromTable = #{fromtable,jdbcType=VARCHAR},
+      ownId = #{ownid,jdbcType=INTEGER},
+      dataFlag = #{dataflag,jdbcType=INTEGER}
+    where imgId = #{imgid,jdbcType=INTEGER}
+  </update>
+</mapper>

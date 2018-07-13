@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zwh.pet.store.mapper.UserMapper">
+	<resultMap id="BaseResultMap"
+		type="com.zwh.pet.store.entity.User">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="openid" jdbcType="VARCHAR" property="openid" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="gender" jdbcType="INTEGER" property="gender" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+		<result column="password" jdbcType="VARCHAR"
+			property="password" />
+		<result column="avatarUrl" jdbcType="VARCHAR"
+			property="avatarurl" />
+		<result column="nickName" jdbcType="VARCHAR"
+			property="nickname" />
+		<result column="createTime" jdbcType="TIMESTAMP"
+			property="createtime" />
+		<result column="lastVisitTime" jdbcType="TIMESTAMP"
+			property="lastvisittime" />
+		<result column="userStatus" jdbcType="INTEGER"
+			property="userstatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, openid, name, gender, phone, password, avatarUrl,
+		nickName,
+		createTime, lastVisitTime,
+		userStatus
+	</sql>
+	<select id="selectByPrimaryKey"
+		parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from user
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert"
+		parameterType="com.zwh.pet.store.entity.User" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into user (openid, name,
+		gender, phone, password,
+		avatarUrl, nickName, createTime,
+		lastVisitTime, userStatus)
+		values
+		(#{openid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+		#{gender,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{avatarurl,jdbcType=VARCHAR},
+		#{nickname,jdbcType=VARCHAR}, now(),
+		#{lastvisittime,jdbcType=TIMESTAMP}, #{userstatus,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.zwh.pet.store.entity.User">
+		insert into user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="openid != null">
+				openid,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="gender != null">
+				gender,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="avatarurl != null">
+				avatarUrl,
+			</if>
+			<if test="nickname != null">
+				nickName,
+			</if>
+			<if test="createTime != null">
+				now(),
+			</if>
+			<if test="lastvisittime != null">
+				lastVisitTime,
+			</if>
+			<if test="userstatus != null">
+				userStatus,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="openid != null">
+				#{openid,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="gender != null">
+				#{gender,jdbcType=INTEGER},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="avatarurl != null">
+				#{avatarurl,jdbcType=VARCHAR},
+			</if>
+			<if test="nickname != null">
+				#{nickname,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				now(),
+			</if>
+			<if test="lastvisittime != null">
+				#{lastvisittime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userstatus != null">
+				#{userstatus,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.zwh.pet.store.entity.User">
+		update user
+		<set>
+			<if test="openid != null">
+				openid = #{openid,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="gender != null">
+				gender = #{gender,jdbcType=INTEGER},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="avatarurl != null">
+				avatarUrl = #{avatarurl,jdbcType=VARCHAR},
+			</if>
+			<if test="nickname != null">
+				nickName = #{nickname,jdbcType=VARCHAR},
+			</if>
+			<if test="lastvisittime != null">
+				lastVisitTime = #{lastvisittime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userstatus != null">
+				userStatus = #{userstatus,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.zwh.pet.store.entity.User">
+		update user
+		set openid = #{openid,jdbcType=VARCHAR},
+		name
+		= #{name,jdbcType=VARCHAR},
+		gender = #{gender,jdbcType=INTEGER},
+		phone =
+		#{phone,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR},
+		avatarUrl = #{avatarurl,jdbcType=VARCHAR},
+		nickName =
+		#{nickname,jdbcType=VARCHAR},
+		lastVisitTime =
+		#{lastvisittime,jdbcType=TIMESTAMP},
+		userStatus =
+		#{userstatus,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="getUserById"
+		resultType="com.zwh.pet.store.entity.User">
+		SELECT
+		*
+		FROM
+		`user` u
+		WHERE
+		id = #{id}
+	</select>
+
+	<select id="getUserByAccount"
+		resultType="com.zwh.pet.store.entity.User">
+		SELECT
+		*
+		FROM
+		`user` u
+		WHERE
+		phone = #{account}
+	</select>
+
+	<select id="getUserByOpenid"
+		resultType="com.zwh.pet.store.entity.User">
+		SELECT
+		*
+		FROM
+		`user` u
+		WHERE
+		openid = #{openid}
+	</select>
+
+	<select id="getUserByAccountAndPassword"
+		resultType="com.zwh.pet.store.entity.User">
+		SELECT
+		*
+		FROM
+		`user` u
+		WHERE
+		u.phone = #{account}
+		AND
+		u.`password` = #{password}
+	</select>
+
+	<update id="updateUserById"
+		parameterType="com.zwh.pet.store.entity.User">
+		update user
+		set openid = #{openid,jdbcType=VARCHAR},
+		name
+		= #{name,jdbcType=VARCHAR},
+		gender = #{gender,jdbcType=INTEGER},
+		phone =
+		#{phone,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR},
+		avatarUrl = #{avatarurl,jdbcType=VARCHAR},
+		nickName =
+		#{nickname,jdbcType=VARCHAR},
+		lastVisitTime =
+		#{lastvisittime,jdbcType=TIMESTAMP},
+		userStatus =
+		#{userstatus,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>

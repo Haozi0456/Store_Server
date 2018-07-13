@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zwh.pet.store.mapper.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.zwh.pet.store.entity.Goods">
+    <id column="goodsId" jdbcType="INTEGER" property="goodsid" />
+    <result column="goodsSn" jdbcType="VARCHAR" property="goodssn" />
+    <result column="productNo" jdbcType="VARCHAR" property="productno" />
+    <result column="goodsName" jdbcType="VARCHAR" property="goodsname" />
+    <result column="goodsImg" jdbcType="VARCHAR" property="goodsimg" />
+    <result column="warnStock" jdbcType="INTEGER" property="warnstock" />
+    <result column="goodsStock" jdbcType="INTEGER" property="goodsstock" />
+    <result column="goodsUnit" jdbcType="VARCHAR" property="goodsunit" />
+    <result column="goodsTips" jdbcType="VARCHAR" property="goodstips" />
+    <result column="isSale" jdbcType="INTEGER" property="issale" />
+    <result column="isBest" jdbcType="INTEGER" property="isbest" />
+    <result column="isHot" jdbcType="INTEGER" property="ishot" />
+    <result column="isNew" jdbcType="INTEGER" property="isnew" />
+    <result column="isRecom" jdbcType="INTEGER" property="isrecom" />
+    <result column="goodsDesc" jdbcType="VARCHAR" property="goodsdesc" />
+    <result column="goodsStatus" jdbcType="INTEGER" property="goodsstatus" />
+    <result column="saleNum" jdbcType="INTEGER" property="salenum" />
+    <result column="saleTime" jdbcType="TIMESTAMP" property="saletime" />
+    <result column="visitNum" jdbcType="INTEGER" property="visitnum" />
+    <result column="commentNum" jdbcType="INTEGER" property="commentnum" />
+    <result column="isSpec" jdbcType="INTEGER" property="isspec" />
+    <result column="goodsSeoKeywords" jdbcType="VARCHAR" property="goodsseokeywords" />
+    <result column="illegalRemarks" jdbcType="VARCHAR" property="illegalremarks" />
+    <result column="dataFlag" jdbcType="INTEGER" property="dataflag" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.zwh.pet.store.entity.Goods">
+    <result column="gallery" jdbcType="LONGVARCHAR" property="gallery" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    goodsId, goodsSn, productNo, goodsName, goodsImg, warnStock, goodsStock, goodsUnit, 
+    goodsTips, isSale, isBest, isHot, isNew, isRecom, goodsDesc, goodsStatus, saleNum, 
+    saleTime, visitNum, commentNum, isSpec, goodsSeoKeywords, illegalRemarks, dataFlag, 
+    createTime
+  </sql>
+  <sql id="Blob_Column_List">
+    gallery
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from goods
+    where goodsId = #{goodsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from goods
+    where goodsId = #{goodsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zwh.pet.store.entity.Goods">
+    insert into goods (goodsId, goodsSn, productNo, 
+      goodsName, goodsImg, warnStock, 
+      goodsStock, goodsUnit, goodsTips, 
+      isSale, isBest, isHot, 
+      isNew, isRecom, goodsDesc, 
+      goodsStatus, saleNum, saleTime, 
+      visitNum, commentNum, isSpec, 
+      goodsSeoKeywords, illegalRemarks, dataFlag, 
+      createTime, gallery)
+    values (#{goodssn,jdbcType=VARCHAR}, #{productno,jdbcType=VARCHAR}, 
+      #{goodsname,jdbcType=VARCHAR}, #{goodsimg,jdbcType=VARCHAR}, #{warnstock,jdbcType=INTEGER}, 
+      #{goodsstock,jdbcType=INTEGER}, #{goodsunit,jdbcType=VARCHAR}, #{goodstips,jdbcType=VARCHAR}, 
+      #{issale,jdbcType=INTEGER}, #{isbest,jdbcType=INTEGER}, #{ishot,jdbcType=INTEGER}, 
+      #{isnew,jdbcType=INTEGER}, #{isrecom,jdbcType=INTEGER}, #{goodsdesc,jdbcType=VARCHAR}, 
+      #{goodsstatus,jdbcType=INTEGER}, #{salenum,jdbcType=INTEGER}, #{saletime,jdbcType=TIMESTAMP}, 
+      #{visitnum,jdbcType=INTEGER}, #{commentnum,jdbcType=INTEGER}, #{isspec,jdbcType=INTEGER}, 
+      #{goodsseokeywords,jdbcType=VARCHAR}, #{illegalremarks,jdbcType=VARCHAR}, #{dataflag,jdbcType=INTEGER}, 
+      now() #{gallery,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zwh.pet.store.entity.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodssn != null">
+        goodsSn,
+      </if>
+      <if test="productno != null">
+        productNo,
+      </if>
+      <if test="goodsname != null">
+        goodsName,
+      </if>
+      <if test="goodsimg != null">
+        goodsImg,
+      </if>
+      <if test="warnstock != null">
+        warnStock,
+      </if>
+      <if test="goodsstock != null">
+        goodsStock,
+      </if>
+      <if test="goodsunit != null">
+        goodsUnit,
+      </if>
+      <if test="goodstips != null">
+        goodsTips,
+      </if>
+      <if test="issale != null">
+        isSale,
+      </if>
+      <if test="isbest != null">
+        isBest,
+      </if>
+      <if test="ishot != null">
+        isHot,
+      </if>
+      <if test="isnew != null">
+        isNew,
+      </if>
+      <if test="isrecom != null">
+        isRecom,
+      </if>
+      <if test="goodsdesc != null">
+        goodsDesc,
+      </if>
+      <if test="goodsstatus != null">
+        goodsStatus,
+      </if>
+      <if test="salenum != null">
+        saleNum,
+      </if>
+      <if test="saletime != null">
+        saleTime,
+      </if>
+      <if test="visitnum != null">
+        visitNum,
+      </if>
+      <if test="commentnum != null">
+        commentNum,
+      </if>
+      <if test="isspec != null">
+        isSpec,
+      </if>
+      <if test="goodsseokeywords != null">
+        goodsSeoKeywords,
+      </if>
+      <if test="illegalremarks != null">
+        illegalRemarks,
+      </if>
+      <if test="dataflag != null">
+        dataFlag,
+      </if>
+      <if test="createtime != null">
+        now(),
+      </if>
+      <if test="gallery != null">
+        gallery,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+     
+      <if test="goodssn != null">
+        #{goodssn,jdbcType=VARCHAR},
+      </if>
+      <if test="productno != null">
+        #{productno,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null">
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsimg != null">
+        #{goodsimg,jdbcType=VARCHAR},
+      </if>
+      <if test="warnstock != null">
+        #{warnstock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsstock != null">
+        #{goodsstock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsunit != null">
+        #{goodsunit,jdbcType=VARCHAR},
+      </if>
+      <if test="goodstips != null">
+        #{goodstips,jdbcType=VARCHAR},
+      </if>
+      <if test="issale != null">
+        #{issale,jdbcType=INTEGER},
+      </if>
+      <if test="isbest != null">
+        #{isbest,jdbcType=INTEGER},
+      </if>
+      <if test="ishot != null">
+        #{ishot,jdbcType=INTEGER},
+      </if>
+      <if test="isnew != null">
+        #{isnew,jdbcType=INTEGER},
+      </if>
+      <if test="isrecom != null">
+        #{isrecom,jdbcType=INTEGER},
+      </if>
+      <if test="goodsdesc != null">
+        #{goodsdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsstatus != null">
+        #{goodsstatus,jdbcType=INTEGER},
+      </if>
+      <if test="salenum != null">
+        #{salenum,jdbcType=INTEGER},
+      </if>
+      <if test="saletime != null">
+        #{saletime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="visitnum != null">
+        #{visitnum,jdbcType=INTEGER},
+      </if>
+      <if test="commentnum != null">
+        #{commentnum,jdbcType=INTEGER},
+      </if>
+      <if test="isspec != null">
+        #{isspec,jdbcType=INTEGER},
+      </if>
+      <if test="goodsseokeywords != null">
+        #{goodsseokeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="illegalremarks != null">
+        #{illegalremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="dataflag != null">
+        #{dataflag,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        now(),
+      </if>
+      <if test="gallery != null">
+        #{gallery,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zwh.pet.store.entity.Goods">
+    update goods
+    <set>
+      <if test="productno != null">
+        productNo = #{productno,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null">
+        goodsName = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsimg != null">
+        goodsImg = #{goodsimg,jdbcType=VARCHAR},
+      </if>
+      <if test="warnstock != null">
+        warnStock = #{warnstock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsstock != null">
+        goodsStock = #{goodsstock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsunit != null">
+        goodsUnit = #{goodsunit,jdbcType=VARCHAR},
+      </if>
+      <if test="goodstips != null">
+        goodsTips = #{goodstips,jdbcType=VARCHAR},
+      </if>
+      <if test="issale != null">
+        isSale = #{issale,jdbcType=INTEGER},
+      </if>
+      <if test="isbest != null">
+        isBest = #{isbest,jdbcType=INTEGER},
+      </if>
+      <if test="ishot != null">
+        isHot = #{ishot,jdbcType=INTEGER},
+      </if>
+      <if test="isnew != null">
+        isNew = #{isnew,jdbcType=INTEGER},
+      </if>
+      <if test="isrecom != null">
+        isRecom = #{isrecom,jdbcType=INTEGER},
+      </if>
+      <if test="goodsdesc != null">
+        goodsDesc = #{goodsdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsstatus != null">
+        goodsStatus = #{goodsstatus,jdbcType=INTEGER},
+      </if>
+      <if test="salenum != null">
+        saleNum = #{salenum,jdbcType=INTEGER},
+      </if>
+      <if test="saletime != null">
+        saleTime = #{saletime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="visitnum != null">
+        visitNum = #{visitnum,jdbcType=INTEGER},
+      </if>
+      <if test="commentnum != null">
+        commentNum = #{commentnum,jdbcType=INTEGER},
+      </if>
+      <if test="isspec != null">
+        isSpec = #{isspec,jdbcType=INTEGER},
+      </if>
+      <if test="goodsseokeywords != null">
+        goodsSeoKeywords = #{goodsseokeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="illegalremarks != null">
+        illegalRemarks = #{illegalremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="dataflag != null">
+        dataFlag = #{dataflag,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        createTime = now(),
+      </if>
+      <if test="gallery != null">
+        gallery = #{gallery,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where goodsId = #{goodsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zwh.pet.store.entity.Goods">
+    update goods
+    set goodsSn = #{goodssn,jdbcType=VARCHAR},
+      productNo = #{productno,jdbcType=VARCHAR},
+      goodsName = #{goodsname,jdbcType=VARCHAR},
+      goodsImg = #{goodsimg,jdbcType=VARCHAR},
+      warnStock = #{warnstock,jdbcType=INTEGER},
+      goodsStock = #{goodsstock,jdbcType=INTEGER},
+      goodsUnit = #{goodsunit,jdbcType=VARCHAR},
+      goodsTips = #{goodstips,jdbcType=VARCHAR},
+      isSale = #{issale,jdbcType=INTEGER},
+      isBest = #{isbest,jdbcType=INTEGER},
+      isHot = #{ishot,jdbcType=INTEGER},
+      isNew = #{isnew,jdbcType=INTEGER},
+      isRecom = #{isrecom,jdbcType=INTEGER},
+      goodsDesc = #{goodsdesc,jdbcType=VARCHAR},
+      goodsStatus = #{goodsstatus,jdbcType=INTEGER},
+      saleNum = #{salenum,jdbcType=INTEGER},
+      saleTime = #{saletime,jdbcType=TIMESTAMP},
+      visitNum = #{visitnum,jdbcType=INTEGER},
+      commentNum = #{commentnum,jdbcType=INTEGER},
+      isSpec = #{isspec,jdbcType=INTEGER},
+      goodsSeoKeywords = #{goodsseokeywords,jdbcType=VARCHAR},
+      illegalRemarks = #{illegalremarks,jdbcType=VARCHAR},
+      dataFlag = #{dataflag,jdbcType=INTEGER},
+      gallery = #{gallery,jdbcType=LONGVARCHAR}
+    where goodsId = #{goodsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zwh.pet.store.entity.Goods">
+    update goods
+    set goodsSn = #{goodssn,jdbcType=VARCHAR},
+      productNo = #{productno,jdbcType=VARCHAR},
+      goodsName = #{goodsname,jdbcType=VARCHAR},
+      goodsImg = #{goodsimg,jdbcType=VARCHAR},
+      warnStock = #{warnstock,jdbcType=INTEGER},
+      goodsStock = #{goodsstock,jdbcType=INTEGER},
+      goodsUnit = #{goodsunit,jdbcType=VARCHAR},
+      goodsTips = #{goodstips,jdbcType=VARCHAR},
+      isSale = #{issale,jdbcType=INTEGER},
+      isBest = #{isbest,jdbcType=INTEGER},
+      isHot = #{ishot,jdbcType=INTEGER},
+      isNew = #{isnew,jdbcType=INTEGER},
+      isRecom = #{isrecom,jdbcType=INTEGER},
+      goodsDesc = #{goodsdesc,jdbcType=VARCHAR},
+      goodsStatus = #{goodsstatus,jdbcType=INTEGER},
+      saleNum = #{salenum,jdbcType=INTEGER},
+      saleTime = #{saletime,jdbcType=TIMESTAMP},
+      visitNum = #{visitnum,jdbcType=INTEGER},
+      commentNum = #{commentnum,jdbcType=INTEGER},
+      isSpec = #{isspec,jdbcType=INTEGER},
+      goodsSeoKeywords = #{goodsseokeywords,jdbcType=VARCHAR},
+      illegalRemarks = #{illegalremarks,jdbcType=VARCHAR},
+      dataFlag = #{dataflag,jdbcType=INTEGER}
+    where goodsId = #{goodsid,jdbcType=INTEGER}
+  </update>
+</mapper>

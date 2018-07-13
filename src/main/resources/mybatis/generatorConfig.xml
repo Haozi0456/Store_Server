@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="context1">
+		<commentGenerator>
+            <property name="suppressDate" value="true" />
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+		<jdbcConnection connectionURL="jdbc:mysql://100.100.100.75:3306/pokemon"
+			driverClass="com.mysql.jdbc.Driver" password="123456" userId="zhaohao" />
+		<javaModelGenerator targetPackage="com.zwh.pet.store.entity"
+			targetProject="ZWH_Store/src/main/java" />
+		<!-- 生成映射文件的包名和位置 -->
+		<sqlMapGenerator targetPackage="mybatis.mapper.weapp"
+			targetProject="ZWH_Store/src/main/resources" />
+		<!-- 生成DAO的包名和位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.zwh.pet.store.mapper" targetProject="ZWH_Store/src/main/java" />
+		<table tableName="images" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false">
+		</table>
+	</context>
+</generatorConfiguration>

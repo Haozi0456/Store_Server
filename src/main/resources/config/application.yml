@@ -1,0 +1,46 @@
+server:
+  port: 81
+#spring配置
+spring:
+  mvc:
+    servlet:
+      load-on-startup: 1
+  #数据源配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://100.100.100.75:3306/pokemon?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+    username: zhaohao
+    password: 123456
+    druid:
+      initial-size: 5
+      min-idle: 10
+      max-active: 50
+      # 配置获取连接等待超时的时间
+      max-wait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      #连接池中连接可空闲的时间
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+  #devtools配置
+  devtools:
+    restart:
+      enabled: false
+
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+
+#log4j2配置
+
+logging:
+  level:
+    root: info
+    com.jqkj: debug
+#文件上传路径配置    
+file:
+  uploadFolder: D:/upload/
